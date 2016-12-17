@@ -27,7 +27,6 @@ public class BinarySearchTest {
     @TestCaseName("searched element {1}, which is presented in sequence {0}, should be at position {2}")
     public void isFound(int[] seq, int searchedElement, int expectedSearchElementPosition) {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
-        assertThat(searchResult.isFound(), is(true));
         assertThat(searchResult.getPosition(), is(expectedSearchElementPosition));
         assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
@@ -37,7 +36,6 @@ public class BinarySearchTest {
         final int searchedElement = 1;
         final int[] seq = {0};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
-        assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
     }
 
@@ -46,7 +44,6 @@ public class BinarySearchTest {
         final int searchedElement = 4;
         final int[] seq = {1, 2, 3};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
-        assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
     }
 
