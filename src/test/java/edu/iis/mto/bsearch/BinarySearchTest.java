@@ -12,7 +12,7 @@ public class BinarySearchTest {
         final int[] seq = {searchedElement};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(true));
-        assertThat(searchedElement, is(seq[searchResult.getPosition()]));
+        assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
     @Test
