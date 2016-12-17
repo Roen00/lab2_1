@@ -10,10 +10,12 @@ import static org.junit.Assert.assertThat;
 @RunWith(Parameterized.class)
 public class BinarySearchTest {
 
+    private int[] seq;
     private int searchedElement;
     private int expectedSearchElementPosition;
 
-    public BinarySearchTest(int searchedElement, int expectedSearchElementPosition){
+    public BinarySearchTest(int[] seq, int searchedElement, int expectedSearchElementPosition){
+        this.seq = seq;
         this.searchedElement = searchedElement;
         this.expectedSearchElementPosition = expectedSearchElementPosition;
     }
