@@ -14,18 +14,18 @@ public class BinarySearchTest {
 
     public Object[][] parameters() {
         final Object[][] objects = {
-                {"sequence which contains only one element", new int[]{1}, 1, 0},
-                {"sequence with more than one element", new int[]{1, 2, 3}, 1, 0},
-                {"sequence with more than one element", new int[]{1, 2, 3}, 3, 2},
-                {"sequence with more than one element", new int[]{1, 2, 3}, 2, 1},
+                {new int[]{1}, 1, 0},
+                {new int[]{1, 2, 3}, 1, 0},
+                {new int[]{1, 2, 3}, 3, 2},
+                {new int[]{1, 2, 3}, 2, 1},
         };
         return objects;
     }
 
     @Test
     @Parameters(method = "parameters")
-    @TestCaseName("searched element {2}, which is presented in {0} {1}, should be at position {3}")
-    public void isFound(String name, int[] seq, int searchedElement, int expectedSearchElementPosition) {
+    @TestCaseName("searched element {1}, which is presented in sequence {0}, should be at position {2}")
+    public void isFound(int[] seq, int searchedElement, int expectedSearchElementPosition) {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(true));
         assertThat(searchResult.getPosition(), is(expectedSearchElementPosition));
