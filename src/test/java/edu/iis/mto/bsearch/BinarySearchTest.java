@@ -14,7 +14,8 @@ public class BinarySearchTest {
 
     public Object[][] parameters() {
         final Object[][] objects = {
-                {"sequence which contains only one element", new int[]{1}, 1, 0}
+                {"sequence which contains only one element", new int[]{1}, 1, 0},
+                {"sequence with more than one element", new int[]{1, 2, 3}, 1, 0},
         };
         return objects;
     }
@@ -36,16 +37,6 @@ public class BinarySearchTest {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
-    }
-
-    @Test
-    public void elementIsFirstInSequenceAndSequenceLengthIsLargerThanOne() {
-        final int searchedElement = 1;
-        final int[] seq = {searchedElement, 2, 3};
-        final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
-        assertThat(searchResult.isFound(), is(true));
-        assertThat(searchResult.getPosition(), is(0));
-        assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
     @Test
