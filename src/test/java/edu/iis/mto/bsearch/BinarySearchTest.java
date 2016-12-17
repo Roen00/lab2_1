@@ -18,26 +18,25 @@ public class BinarySearchTest {
     private int searchedElement;
     private int expectedSearchElementPosition;
 
-    public BinarySearchTest(int[] seq, int searchedElement, int expectedSearchElementPosition) {
+    public BinarySearchTest(String collectionName, int[] seq, int searchedElement, int expectedSearchElementPosition) {
         this.seq = seq;
         this.searchedElement = searchedElement;
         this.expectedSearchElementPosition = expectedSearchElementPosition;
     }
 
-    @Parameters
+    @Parameters(name = "for {0} search should find element with value {2} on position {3}")
     public static Collection parameters() {
         final Object[][] objects = {
+                {"collection which contains only one element", new int[]{1}, 1, 0}
         };
         return Arrays.asList(objects);
     }
-    
+
     @Test
-    public void elementIsPresentedInSequenceAndSequenceLengthEqualsOne() {
-        final int searchedElement = 1;
-        final int[] seq = {searchedElement};
+    public void isFound() {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(true));
-        assertThat(searchResult.getPosition(), is(0));
+        assertThat(searchResult.getPosition(), is(expectedSearchElementPosition));
         assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
