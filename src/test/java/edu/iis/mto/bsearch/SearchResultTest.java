@@ -14,11 +14,17 @@ public class SearchResultTest {
         assertThat(sut.isFound(), is(true));
     }
 
-
     @Test
     public void isFoundShouldReturnTrueForPosition1(){
         final SearchResult sut = new SearchResult();
         sut.setPosition(1);
         assertThat(sut.isFound(), is(true));
+    }
+
+    @Test
+    public void isFoundShouldReturnFalseForPositionMinus1(){
+        final SearchResult sut = new SearchResult();
+        sut.setPosition(-1);
+        assertThat(sut.isFound(), is(false));
     }
 }
