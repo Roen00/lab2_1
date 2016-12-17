@@ -31,6 +31,7 @@ public class BinarySearchTest {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(true));
         assertThat(searchResult.getPosition(), is(0));
+        assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
 }
