@@ -37,4 +37,14 @@ public class SearchResultTest {
 
         assertThat(sut1.equals(sut2), is(true));
     }
+
+    @Test
+    public void equalsReturnFalseIfTwoDifferentInstancesHaveDifferentPosition(){
+        final SearchResult sut1 = new SearchResult();
+        sut1.setPosition(1);
+        final SearchResult sut2 = new SearchResult();
+        sut2.setPosition(2);
+
+        assertThat(sut1.equals(sut2), is(false));
+    }
 }
