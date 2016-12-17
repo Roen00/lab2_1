@@ -14,14 +14,14 @@ public class BinarySearchTest {
 
     public Object[][] parameters() {
         final Object[][] objects = {
-                {"collection which contains only one element", new int[]{1}, 1, 0}
+                {"sequence which contains only one element", new int[]{1}, 1, 0}
         };
         return objects;
     }
 
     @Test
     @Parameters(method = "parameters")
-    @TestCaseName("{0}{1}{2}{3}")
+    @TestCaseName("searched element {2}, which is presented in {0} {1}, should be at position {3}")
     public void isFound(String name, int[] seq, int searchedElement, int expectedSearchElementPosition) {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(true));
