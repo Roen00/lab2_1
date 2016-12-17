@@ -45,4 +45,14 @@ public class BinarySearchTest {
         assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
+    @Test
+    public void elementIsInTheMiddleOfTheSequenceAndSequenceLengthIsLargerThanOne(){
+        final int searchedElement = 2;
+        final int[] seq = {1, searchedElement, 3};
+        final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(searchResult.getPosition(), is(1));
+        assertThat(seq[searchResult.getPosition()], is(searchedElement));
+    }
+
 }
