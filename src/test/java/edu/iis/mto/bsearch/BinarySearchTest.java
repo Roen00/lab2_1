@@ -35,4 +35,14 @@ public class BinarySearchTest {
         assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
+    @Test
+    public void elementIsLastInSequenceAndSequenceLengthIsLargerThanOne(){
+        final int searchedElement = 3;
+        final int[] seq = {1, 2, searchedElement};
+        final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
+        assertThat(searchResult.isFound(), is(true));
+        assertThat(searchResult.getPosition(), is(2));
+        assertThat(seq[searchResult.getPosition()], is(searchedElement));
+    }
+
 }
