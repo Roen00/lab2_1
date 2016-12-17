@@ -63,4 +63,11 @@ public class BinarySearchTest {
         assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void givenSequenceIsEmpty(){
+        final int searchedElement = 4;
+        final int[] emptySeq = {};
+        BinarySearch.search(searchedElement, emptySeq);
+    }
 }
