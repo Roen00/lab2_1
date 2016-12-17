@@ -17,6 +17,7 @@ public class BinarySearchTest {
                 {"sequence which contains only one element", new int[]{1}, 1, 0},
                 {"sequence with more than one element", new int[]{1, 2, 3}, 1, 0},
                 {"sequence with more than one element", new int[]{1, 2, 3}, 3, 2},
+                {"sequence with more than one element", new int[]{1, 2, 3}, 2, 1},
         };
         return objects;
     }
@@ -38,16 +39,6 @@ public class BinarySearchTest {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
-    }
-
-    @Test
-    public void elementIsInTheMiddleOfTheSequenceAndSequenceLengthIsLargerThanOne() {
-        final int searchedElement = 2;
-        final int[] seq = {1, searchedElement, 3};
-        final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
-        assertThat(searchResult.isFound(), is(true));
-        assertThat(searchResult.getPosition(), is(1));
-        assertThat(seq[searchResult.getPosition()], is(searchedElement));
     }
 
     @Test
