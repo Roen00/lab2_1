@@ -3,11 +3,11 @@ package edu.iis.mto.bsearch;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class BinarySearchTest {
     @Test
-    public void elementIsPresentedInSequenceAndSequenceLengthEqualsOne(){
+    public void elementIsPresentedInSequenceAndSequenceLengthEqualsOne() {
         final int searchedElement = 1;
         final int[] seq = {searchedElement};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
@@ -17,7 +17,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsNotPresentedInSequenceAndSequenceLengthEqualsOne(){
+    public void elementIsNotPresentedInSequenceAndSequenceLengthEqualsOne() {
         final int searchedElement = 1;
         final int[] seq = {0};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
@@ -26,7 +26,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsFirstInSequenceAndSequenceLengthIsLargerThanOne(){
+    public void elementIsFirstInSequenceAndSequenceLengthIsLargerThanOne() {
         final int searchedElement = 1;
         final int[] seq = {searchedElement, 2, 3};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
@@ -36,7 +36,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsLastInSequenceAndSequenceLengthIsLargerThanOne(){
+    public void elementIsLastInSequenceAndSequenceLengthIsLargerThanOne() {
         final int searchedElement = 3;
         final int[] seq = {1, 2, searchedElement};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
@@ -46,7 +46,7 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsInTheMiddleOfTheSequenceAndSequenceLengthIsLargerThanOne(){
+    public void elementIsInTheMiddleOfTheSequenceAndSequenceLengthIsLargerThanOne() {
         final int searchedElement = 2;
         final int[] seq = {1, searchedElement, 3};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
@@ -56,12 +56,11 @@ public class BinarySearchTest {
     }
 
     @Test
-    public void elementIsNotInTheSequenceAndSequenceLengthIsLargerThanOne(){
+    public void elementIsNotInTheSequenceAndSequenceLengthIsLargerThanOne() {
         final int searchedElement = 4;
         final int[] seq = {1, 2, 3};
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(false));
         assertThat(searchResult.getPosition(), is(-1));
     }
-
 }
