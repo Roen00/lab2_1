@@ -14,5 +14,14 @@ public class BinarySearchTest {
         assertThat(searchResult.isFound(), is(true));
         assertThat(searchedElement, is(seq[searchResult.getPosition()]));
     }
-    
+
+    @Test
+    public void elementIsNotPresentedInSequenceAndSequenceLengthEqualsOne(){
+        final int searchedElement = 1;
+        final int[] seq = {0};
+        final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
+        assertThat(searchResult.isFound(), is(false));
+        assertThat(searchResult.getPosition(), is(-1));
+    }
+
 }
