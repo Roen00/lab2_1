@@ -1,11 +1,23 @@
 package edu.iis.mto.bsearch;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.Parameterized;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
+@RunWith(Parameterized.class)
 public class BinarySearchTest {
+
+    private int searchedElement;
+    private int expectedSearchElementPosition;
+
+    public BinarySearchTest(int searchedElement, int expectedSearchElementPosition){
+        this.searchedElement = searchedElement;
+        this.expectedSearchElementPosition = expectedSearchElementPosition;
+    }
+
     @Test
     public void elementIsPresentedInSequenceAndSequenceLengthEqualsOne() {
         final int searchedElement = 1;
@@ -65,7 +77,7 @@ public class BinarySearchTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void givenSequenceIsEmpty(){
+    public void givenSequenceIsEmpty() {
         final int searchedElement = 4;
         final int[] emptySeq = {};
         BinarySearch.search(searchedElement, emptySeq);
