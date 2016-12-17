@@ -3,6 +3,10 @@ package edu.iis.mto.bsearch;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
+
+import java.util.Arrays;
+import java.util.Collection;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -14,12 +18,19 @@ public class BinarySearchTest {
     private int searchedElement;
     private int expectedSearchElementPosition;
 
-    public BinarySearchTest(int[] seq, int searchedElement, int expectedSearchElementPosition){
+    public BinarySearchTest(int[] seq, int searchedElement, int expectedSearchElementPosition) {
         this.seq = seq;
         this.searchedElement = searchedElement;
         this.expectedSearchElementPosition = expectedSearchElementPosition;
     }
 
+    @Parameters
+    public static Collection parameters() {
+        final Object[][] objects = {
+        };
+        return Arrays.asList(objects);
+    }
+    
     @Test
     public void elementIsPresentedInSequenceAndSequenceLengthEqualsOne() {
         final int searchedElement = 1;
