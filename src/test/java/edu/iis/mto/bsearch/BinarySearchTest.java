@@ -1,39 +1,28 @@
 package edu.iis.mto.bsearch;
 
+import junitparams.JUnitParamsRunner;
+import junitparams.Parameters;
+import junitparams.naming.TestCaseName;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameters;
-
-import java.util.Arrays;
-import java.util.Collection;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-@RunWith(Parameterized.class)
+@RunWith(JUnitParamsRunner.class)
 public class BinarySearchTest {
 
-    private int[] seq;
-    private int searchedElement;
-    private int expectedSearchElementPosition;
-
-    public BinarySearchTest(String collectionName, int[] seq, int searchedElement, int expectedSearchElementPosition) {
-        this.seq = seq;
-        this.searchedElement = searchedElement;
-        this.expectedSearchElementPosition = expectedSearchElementPosition;
-    }
-
-    @Parameters(name = "for {0} search should find element with value {2} on position {3}")
-    public static Collection parameters() {
+    public Object[][] parameters() {
         final Object[][] objects = {
                 {"collection which contains only one element", new int[]{1}, 1, 0}
         };
-        return Arrays.asList(objects);
+        return objects;
     }
 
     @Test
-    public void isFound() {
+    @Parameters(method = "parameters")
+    @TestCaseName("{0}{1}{2}{3}")
+    public void isFound(String name, int[] seq, int searchedElement, int expectedSearchElementPosition) {
         final SearchResult searchResult = BinarySearch.search(searchedElement, seq);
         assertThat(searchResult.isFound(), is(true));
         assertThat(searchResult.getPosition(), is(expectedSearchElementPosition));
